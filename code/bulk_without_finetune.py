@@ -25,7 +25,7 @@ def main():
                         help='random seed (default: 1105)')
     parser.add_argument('--enc_max_seq_len', type=int, default=20000,
                         help='sequence length of encoder')
-    parser.add_argument('--dec_max_seq_len', type=int, default=1000,
+    parser.add_argument('--dec_max_seq_len', type=int, default=20000,
                         help='sequence length of decoder')
     parser.add_argument('--fix_set', action='store_false',
                         help='fix (aligned) or disordering (un-aligned) dataset')
@@ -52,8 +52,8 @@ def main():
     ##########################
          
     #---  Load Single Cell Data  ---#
-    scRNA_adata = sc.read_h5ad(args.RNA_path)[:100]
-    scP_adata = sc.read_h5ad(args.Pro_path)[:100]
+    scRNA_adata = sc.read_h5ad(args.RNA_path)
+    scP_adata = sc.read_h5ad(args.Pro_path)
     print('Total number of origin RNA genes: ', scRNA_adata.n_vars)
     print('Total number of origin proteins: ', scP_adata.n_vars)
     print('Total number of origin cells: ', scRNA_adata.n_obs)
