@@ -81,6 +81,7 @@ def test(model, device, test_loader):
             y = torch.where(torch.isnan(y), torch.full_like(y, 0), y)
             test_loss += F.mse_loss(y_hat[pro_mask], y[pro_mask]).item()
             test_ccc += loss2(y_hat[pro_mask], y[pro_mask]).item()
+            print("test_ccc",test_ccc)
 
             if device == 'cpu':
                 y_hat_all.extend(y_hat[pro_mask].view(y_hat.shape[0], -1).numpy().tolist())
